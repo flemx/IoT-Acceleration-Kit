@@ -1,0 +1,34 @@
+.myChart{
+    height: 230px;
+}
+.chart-wrapper{
+    background-color: white;
+    width: 80%;
+}
+.chart-container{
+    padding-left: 5%;
+    width: 95%;
+}
+
+.chart-container img{
+    width: 60%;
+    margin-left: 25%;
+}
+
+.temp-reading-red{
+    font-size: 1.5rem;
+    color: #da3232;
+    display: flex;
+    align-items: center;
+}
+.temp-reading-green{
+    font-size: 1.5rem;
+    color: #29b73d;
+    display: flex;
+    align-items: center;
+}
+
+
+.app-wrapper{
+    display: flex;
+}

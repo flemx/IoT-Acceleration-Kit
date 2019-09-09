@@ -1,0 +1,15 @@
+<template>
+    <lightning-card  title="Device status" icon-name="standard:iot_context">
+        <div class="app-wrapper">
+                <div class="chart-wrapper">
+                    <div class="chart-container">
+                        <canvas class="myChart" lwc:dom="manual"></canvas>
+                    </div>  
+                </div>
+                <div class={classNameTemp}>
+                        <span>{eventValue} °C</span>
+                </div>
+        </div>    
+       
+    </lightning-card>
+</template>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="VehicleMeter">
+    <apiVersion>46.0</apiVersion>
+        <isExposed>true</isExposed>
+        <targets>
+            <target>lightning__AppPage</target>
+            <target>lightning__RecordPage</target>
+            <target>lightning__HomePage</target>
+            <target>lightningCommunity__Page</target>
+            <target>lightningCommunity__Default</target>
+        </targets>
+        <targetConfigs>
+            <targetConfig targets="lightning__AppPage,lightning__RecordPage,lightning__HomePage,lightningCommunity__Default">
+                <property label="Patform event name" name="channelName" default="/event/BYK_Device_Reading__e" type="String" /> 
+                <property label="Platform event attribute" name="eventParameter" default="temperature__c" type="String" /> 
+                <property label="Maximal Y value" name="yLength" default="60" type="String" /> 
+                <property label="Y Step value" name="yStep" default="0.5" type="String" />
+                <property label="Yellow to Green status value lower than" name="yellowStatus" default="27" type="String" />
+                <property label="Red status value higher than" name="redStatus" default="33" type="String" />
+                <property label="Use fake data" name="isFake" default="false" type="Boolean" />
+                <property label="Fake data minimum value" name="fakeMin" default="25" type="String" />
+                <property label="Fake data maximum value" name="fakeMax" default="40" type="String" />
+            </targetConfig>
+        </targetConfigs>
+</LightningComponentBundle>
