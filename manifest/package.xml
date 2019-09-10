@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>Vehicle_test__e</members>
+        <name>PermissionSet</name>
+        <members>vehicle_IoT_component</members>
+    </types>
+    <types>
+        <name>Flow</name>
+        <members>Vehicle_Temperature</members>
+    </types>
+    <types>
+        <members>My_vehicle__e</members>
         <name>CustomObject</name>
+    </types>
+    <types>
+        <name>CustomField</name>
+        <members>Asset.Open_case__c</members>
+        <members>Asset.deviceId__c</members>
+        <members>My_vehicle__e.deviceId__c</members>
+        <members>My_vehicle__e.door__c</members>
+        <members>My_vehicle__e.humidity__c</members>
+        <members>My_vehicle__e.temperature__c</members>
+        <members>My_vehicle__e.ts__c</members>
+    </types>
+    <types>
+        <name>StandardValueSet</name>
+        <members>CaseOrigin</members>
     </types>
     <types>
         <members>vehicleMeter</members>

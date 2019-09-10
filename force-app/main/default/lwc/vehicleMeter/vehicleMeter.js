@@ -28,6 +28,9 @@ export default class VehicleMeter extends LightningElement {
     // Object for chart parameters
     chartConfig = {};
 
+    // Track last event valuye
+    @track lastEvtValue;
+
     // Boolean to track if renderedCallback() was executed
     chartInitialized = false;
 
@@ -71,8 +74,8 @@ export default class VehicleMeter extends LightningElement {
         console.log('renderedCallback executed');
         const messageCallback = (response) => {
             console.log('Event received - ' + this.eventParameter + ' is : ', response.data.payload[this.eventParameter]);
-            this.eventValue = parseFloat(response.data.payload[this.eventParameter]);
-            // Response contains the payload of the new message received
+            let value = parseFloat(response.data.payload[this.eventParameter]);
+            this.eventValue =  value;
         };
 
         // Invoke subscribe method of empApi. Pass reference to messageCallback
@@ -164,15 +167,10 @@ export default class VehicleMeter extends LightningElement {
             }
                 if(this.eventValue > this.chartConfig.redStatus){
                     this.classNameTemp = 'temp-reading-red';
-                    console.log(" this.classNameTemp = 'temp-reading-red';")
-                    console.log('this.classNameTemp: ' + this.eventValue);
-                    console.log('this.chartConfig.redStatus: ' + this.chartConfig.redStatus);
                 }
                 if(this.eventValue < this.chartConfig.redStatus + 1){
                     this.classNameTemp = 'temp-reading-green';
-                    console.log(" this.classNameTemp = 'temp-reading-green';")
-                    console.log('this.classNameTemp: ' + this.eventValue);
-                    console.log('this.chartConfig.redStatus: ' + this.chartConfig.redStatus);
+
                 }
                 return this.eventValue;
             
@@ -220,7 +218,7 @@ export default class VehicleMeter extends LightningElement {
                         realtime: {
                             duration: 20000,
                             refresh: 1300,
-                            delay: 3000,
+                            delay: 3500,
                             onRefresh: onRefresh
                         }
                     }],
