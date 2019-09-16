@@ -19,5 +19,5 @@
                 <property label="Fake data minimum value" name="fakeMin" default="25.0" type="String" />
                 <property label="Fake data maximum value" name="fakeMax" default="40.0" type="String" />
             </targetConfig>
-        </targetConfigs>plat
+        </targetConfigs>
 </LightningComponentBundle>
