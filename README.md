@@ -12,6 +12,12 @@ IoT Streaming chart
 - Electric Imp setup guide:  https://github.com/electricimp/Salesforce/tree/master/examples/OAuth2_SmartRefrigerator
 
 
+<b> Recommended Trailhead courses: </b>
+- https://trailhead.salesforce.com/en/content/learn/modules/platform_events_basics
+- https://trailhead.salesforce.com/en/content/learn/projects/workshop-platform-events
+- https://trailhead.salesforce.com/en/content/learn/trails/build-lightning-web-components
+
+
 ## Description of Files and Directories
 
 - Built in Lightning Web components using EmpApi to subscribe to platform events
