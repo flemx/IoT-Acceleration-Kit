@@ -2,7 +2,7 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <name>PermissionSet</name>
-        <members>vehicle_IoT_component</members>
+        <members>streaming_IoT_component</members>
     </types>
     <types>
         <name>Flow</name>
@@ -27,7 +27,7 @@
         <members>CaseOrigin</members>
     </types>
     <types>
-        <members>vehicleMeter</members>
+        <members>streamingIoTChart</members>
         <name>LightningComponentBundle</name>
     </types>
     <types>

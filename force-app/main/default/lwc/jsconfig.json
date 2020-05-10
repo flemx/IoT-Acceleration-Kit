@@ -3,11 +3,11 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/vehicleMeter": [
-                "vehicleMeter/vehicleMeter.js"
+            "c/streamingIoTChart": [
+                "streamingIoTChart/streamingIoTChart.js"
             ]
         }
-    },
+    },streamingIoTChart/vehicleMeter.js
     "include": [
         "**/*",
         "../../../../.sfdx/typings/lwc/**/*.d.ts"

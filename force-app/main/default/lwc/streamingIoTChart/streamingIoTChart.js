@@ -6,7 +6,7 @@ import CHARTJS from '@salesforce/resourceUrl/chartjsStream';
 
 
 
-export default class VehicleMeter extends LightningElement {
+export default class streamingIoTChart extends LightningElement {
 
     // Set color of temperature text
     @track classNameTemp = 'temp-reading-green';
