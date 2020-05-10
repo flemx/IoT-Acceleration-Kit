@@ -13,6 +13,17 @@
             <targetConfig targets="lightning__AppPage,lightning__RecordPage,lightning__HomePage,lightningCommunity__Default">
                 <property label="Patform event name" name="channelName" default="/event/My_vehicle__e" type="String" /> 
                 <property label="Platform event attribute" name="eventParameter" default="temperature__c" type="String" /> 
+
+                <property label="Label title" name="titleLabel" default="Device Status" type="String" /> 
+                <property label="Value label X axes" name="valueNameX" default="Time" type="String" /> 
+                <property label="Value label Y axes" name="valueNameY" default="Temperature" type="String" /> 
+
+                <property label="Show current value" name="showCur" default="true" type="Boolean" /> 
+                <property label="Current Value symbol" name="valSymb" default="°C" type="String" /> 
+
+                <property label="Red bar color" name="redBar" type="String" default="rgb(255, 84, 54)"/>
+                <property label="Green bar color" name="greenBar" type="String" default="rgb(149, 235, 91)"/>
+
                 <property label="Maximal Y value" name="yLength" default="60" type="String" /> 
                 <property label="Red status value higher than" name="redStatus" default="33.0" type="String" />
                 <property label="Use fake data" name="isFake" default="false" type="Boolean" />

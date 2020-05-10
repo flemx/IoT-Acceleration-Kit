@@ -20,7 +20,15 @@ export default class streamingIoTChart extends LightningElement {
     @api redStatus;
     @api eventParameter;
     @api channelName;
-    
+
+    @api titleLabel;
+    @api valueNameX;
+    @api valueNameY;
+    @api showCur;
+    @api valSymb;
+    @api redBar;
+    @api greenBar;
+
     //The platform event value & empApi subscription object
     @track eventValue
     subscription = {};
@@ -33,6 +41,7 @@ export default class streamingIoTChart extends LightningElement {
 
     // Boolean to track if renderedCallback() was executed
     chartInitialized = false;
+
 
     // Tracks changes to channelName text field
     handleChannelName(event) {
@@ -56,18 +65,23 @@ export default class streamingIoTChart extends LightningElement {
         this.chartInitialized = true;
 
         //Load scripts
-        Promise.all([
-            loadStyle(this, CHARTJS + '/Chart.css'),
-            loadScript(this, CHARTJS + '/moment.js'),
-            loadScript(this, CHARTJS + '/Chart.js')
-            
-        ])
-            .then(() => {
-                this.initializeChart();
-            })
-            .catch(error => {
-                console.log('Error loading chart scripts: ' + error);
-            });
+        try{
+            Promise.all([
+                loadStyle(this, CHARTJS + '/Chart.css'),
+                loadScript(this, CHARTJS + '/moment.js'),
+                loadScript(this, CHARTJS + '/Chart.js')
+                
+            ])
+                .then(() => {
+                    this.initializeChart();
+                })
+                .catch(error => {
+                    console.log('Error loading chart scripts: ' + error);
+                });
+        }catch(e){
+            console.log('Error detected: ', e);
+        }
+       
 
           
         //Handle platform events 
@@ -111,13 +125,16 @@ export default class streamingIoTChart extends LightningElement {
         let firstNumber = true;
 
         // Color codes to use for chart bars
+        // let chartColors = {
+        //     green: 'rgb(149, 235, 91)',
+        //     red: 'rgb(255, 84, 54)',
+        //     darkGreen: 'rgb(69, 110, 42)',
+        //     darkRed: 'rgb(133, 43, 28)'
+        // };
         let chartColors = {
-            green: 'rgb(149, 235, 91)',
-            red: 'rgb(255, 84, 54)',
-            darkGreen: 'rgb(69, 110, 42)',
-            darkRed: 'rgb(133, 43, 28)'
+            green: this.greenBar,
+            red: this.redBar
         };
-
         
         //Below function will be called to set the data for the y ass and dynamically set the barchart colors 
         let randomScalingFactor = () => {
@@ -131,18 +148,20 @@ export default class streamingIoTChart extends LightningElement {
 
 
             let setBarcolor = (length) =>{
-                window.myChart.config.data.datasets[0].backgroundColor = [];
-                window.myChart.config.data.datasets[0].borderColor = [];
+                myChart.config.data.datasets[0].backgroundColor = [];
+                myChart.config.data.datasets[0].borderColor = [];
                 for(let i = 0; i < length; i++){
-                    let valueArr = window.myChart.config.data.datasets[0].data;
+                    let valueArr = myChart.config.data.datasets[0].data;
                     for(let j = 0; j < length; j++){
                         if(valueArr[j].y > this.chartConfig.redStatus){
-                            window.myChart.config.data.datasets[0].backgroundColor.push(chartColors.red);
-                            window.myChart.config.data.datasets[0].borderColor.push(chartColors.darkRed);
+                            myChart.config.data.datasets[0].backgroundColor.push(chartColors.red);
+                            // myChart.config.data.datasets[0].borderColor.push(chartColors.darkRed);
+                            myChart.config.data.datasets[0].borderColor.push(chartColors.red);
                         }
                         if(valueArr[j].y < this.chartConfig.redStatus + 0.1){
-                            window.myChart.config.data.datasets[0].backgroundColor.push(chartColors.green);
-                            window.myChart.config.data.datasets[0].borderColor.push(chartColors.darkGreen);
+                            myChart.config.data.datasets[0].backgroundColor.push(chartColors.green);
+                            // myChart.config.data.datasets[0].borderColor.push(chartColors.darkGreen);
+                            myChart.config.data.datasets[0].borderColor.push(chartColors.green);
                         }
                     }
                 }
@@ -162,14 +181,14 @@ export default class streamingIoTChart extends LightningElement {
                     this.eventValue  = Math.round( (Math.random() * (this.chartConfig.fakeMax - this.chartConfig.fakeMin) + this.chartConfig.fakeMin) * 10) / 10;
                 }
                 
-                let length = window.myChart.config.data.datasets[0].data.length - 1;
+                let length = myChart.config.data.datasets[0].data.length - 1;
                 setBarcolor(length);
             }
                 if(this.eventValue > this.chartConfig.redStatus){
-                    this.classNameTemp = 'temp-reading-red';
+                    this.classNameTemp = `color:${this.redBar};`;
                 }
                 if(this.eventValue < this.chartConfig.redStatus + 1){
-                    this.classNameTemp = 'temp-reading-green';
+                    this.classNameTemp = `color:${this.greenBar};`;
 
                 }
                 return this.eventValue;
@@ -209,7 +228,7 @@ export default class streamingIoTChart extends LightningElement {
                 },
                 title: {
                     display: true,
-                    text: 'Temperature status'
+                    text: this.valueNameX
                 },
                 scales: {
                     xAxes: [{
@@ -232,7 +251,7 @@ export default class streamingIoTChart extends LightningElement {
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: 'Temperature'
+                            labelString: this.valueNameY
                         }
                     }]
                 },
@@ -248,7 +267,7 @@ export default class streamingIoTChart extends LightningElement {
         };
         
             let ctx = this.template.querySelector('.myChart').getContext('2d');
-            window.myChart = new Chart(ctx, config);
+            let myChart = new Chart(ctx, config);
     
  
         

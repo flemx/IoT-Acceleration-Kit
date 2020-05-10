@@ -1,14 +1,28 @@
 <template>
-    <lightning-card  title="Device status" icon-name="standard:iot_context">
+    <lightning-card  title={titleLabel} icon-name="standard:iot_context">
         <div class="app-wrapper">
+            <template if:false={showCur}>
+                <div class="chart-wrapper2">
+                    <div class="chart-container">
+                        <canvas class="myChart" lwc:dom="manual"></canvas>
+                    </div>  
+                </div>
+            </template>
+            <template if:true={showCur}>
                 <div class="chart-wrapper">
                     <div class="chart-container">
                         <canvas class="myChart" lwc:dom="manual"></canvas>
                     </div>  
                 </div>
-                <div class={classNameTemp}>
-                        <span>{eventValue} °C</span>
-                </div>
+            </template>
+                
+                <template if:true={showCur}>
+                    <div class="temp-reading" style={classNameTemp}>
+                                <span>{eventValue} {valSymb}</span> 
+                            <!-- <span>{eventValue} °C</span>   -->
+                    </div>
+                </template>
+               
         </div>    
     </lightning-card>
 </template>

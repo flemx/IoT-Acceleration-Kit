@@ -3,11 +3,14 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
+            "c/streaming_IoT_Chart": [
+                "streaming_IoT_Chart/streaming_IoT_Chart.js"
+            ],
             "c/streamingIoTChart": [
                 "streamingIoTChart/streamingIoTChart.js"
             ]
         }
-    },streamingIoTChart/vehicleMeter.js
+    },
     "include": [
         "**/*",
         "../../../../.sfdx/typings/lwc/**/*.d.ts"

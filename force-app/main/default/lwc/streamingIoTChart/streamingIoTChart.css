@@ -5,6 +5,10 @@
     background-color: white;
     width: 80%;
 }
+.chart-wrapper2{
+    background-color: white;
+    width: 100%;
+}
 .chart-container{
     padding-left: 5%;
     width: 95%;
@@ -13,6 +17,11 @@
 .chart-container img{
     width: 60%;
     margin-left: 25%;
+}
+.temp-reading{
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .temp-reading-red{
