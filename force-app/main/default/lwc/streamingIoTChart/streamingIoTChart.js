@@ -28,6 +28,12 @@ export default class streamingIoTChart extends LightningElement {
     @api valSymb;
     @api redBar;
     @api greenBar;
+    @api get chartHeight(){
+        return `height:230px;`;
+        // return `height:${this.chartHeight};`;
+    }
+
+    @track delayedEventValue;
 
     //The platform event value & empApi subscription object
     @track eventValue

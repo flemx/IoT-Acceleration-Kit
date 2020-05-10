@@ -16,7 +16,8 @@
 
                 <property label="Label title" name="titleLabel" default="Device Status" type="String" /> 
                 <property label="Value label X axes" name="valueNameX" default="Time" type="String" /> 
-                <property label="Value label Y axes" name="valueNameY" default="Temperature" type="String" /> 
+                <property label="Value label Y axes" name="valueNameY" default="Temperature" type="String" />  
+                <!-- <property label="Height of chart" name="chartHeight" default="230px" type="String" />  -->
 
                 <property label="Show current value" name="showCur" default="true" type="Boolean" /> 
                 <property label="Current Value symbol" name="valSymb" default="°C" type="String" /> 
