@@ -33,8 +33,6 @@ export default class streamingIoTChart extends LightningElement {
         // return `height:${this.chartHeight};`;
     }
 
-    @track delayedEventValue;
-
     //The platform event value & empApi subscription object
     @track eventValue
     subscription = {};
@@ -53,6 +51,7 @@ export default class streamingIoTChart extends LightningElement {
     handleChannelName(event) {
         this.channelName = event.target.value;
     }
+
 
 
     renderedCallback(){
@@ -89,6 +88,7 @@ export default class streamingIoTChart extends LightningElement {
         }
        
 
+       
           
         //Handle platform events 
         console.log('renderedCallback executed');
@@ -197,6 +197,7 @@ export default class streamingIoTChart extends LightningElement {
                     this.classNameTemp = `color:${this.greenBar};`;
 
                 }
+                
                 return this.eventValue;
             
         }
@@ -241,9 +242,9 @@ export default class streamingIoTChart extends LightningElement {
                         type: 'realtime',
                         barPercentage: 0.9,
                         realtime: {
-                            duration: 20000,
-                            refresh: 1300,
-                            delay: 3500,
+                            duration: 40000,
+                            refresh: 3000,
+                            delay: 5500,
                             onRefresh: onRefresh
                         }
                     }],
